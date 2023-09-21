@@ -43,17 +43,13 @@ public class Employee_Controller {
 
     @GetMapping("/showFormForUpdate/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model){
-        //Get Employee from the Service
         Employee_Model employee_model = employee_service.getEmployeeById(id);
-
-        //Set employee as a model attribute to pre-populate the form
         model.addAttribute("employee", employee_model);
         return "update_employee";
     }
 
     @GetMapping("/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable (value = "id") long id){
-        //Call delete employee method
         this.employee_service.deleteEmployeeById(id);
         return "redirect:/showEmployeeList";
     }
